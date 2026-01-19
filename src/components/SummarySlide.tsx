@@ -64,7 +64,7 @@ export default function SummarySlide({ data, goToSlide }: SummarySlideProps) {
   };
 
   return (
-    <div className="slide py-8 px-4 pattern-grid">
+    <div className="slide pt-8 pb-24 px-4 pattern-grid">
       {/* Confetti animation */}
       {showConfetti && (
         <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">

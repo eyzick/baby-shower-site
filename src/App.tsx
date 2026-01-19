@@ -193,7 +193,7 @@ function App() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 2, duration: 0.5 }}
-          className="fixed bottom-24 left-1/2 -translate-x-1/2 text-sky-500 text-sm font-medium flex items-center gap-2"
+          className="fixed bottom-20 left-1/2 -translate-x-1/2 text-sky-500 text-sm font-medium flex items-center gap-2 bg-white/70 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm"
         >
           <motion.span
             animate={{ x: [0, 10, 0] }}

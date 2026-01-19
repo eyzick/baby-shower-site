@@ -117,10 +117,10 @@ export default function WelcomeSlide({ data, onNext }: WelcomeSlideProps) {
         </span>
       </motion.button>
 
-      {/* Decorative elements */}
+      {/* Decorative elements - hidden on mobile to avoid overlap with swipe hint */}
       <motion.div
         variants={itemVariants}
-        className="mt-12 flex justify-center gap-4 text-3xl opacity-60"
+        className="mt-12 hidden md:flex justify-center gap-4 text-3xl opacity-60"
       >
         {['⭐', '🧸', '🍼', '🚀', '💙'].map((emoji, i) => (
           <motion.span

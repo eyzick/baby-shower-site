@@ -15,12 +15,8 @@ export const babyShowerData: BabyShowerData = {
     { store: "Babylist", url: "https://my.babylist.com/qfvdypari" },
   ],
   giftSuggestions: [
-    "Diapers (Size Newborn & 1)",
-    "Baby Books",
-    "Swaddle Blankets",
-    "Baby Monitor",
-    "Gift Cards",
-    "Handmade Items Welcome! 💝"
+   "Diapers (diaper raffle will be held!)",
+   "See registry for more ideas!"
   ],
   theme: "Party",
   dresscode: "Party Casual - pastels encouraged!",

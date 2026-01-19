@@ -33,7 +33,7 @@ export const itemVariants = {
 export default function SlideWrapper({ children, className = '' }: SlideWrapperProps) {
   return (
     <motion.div
-      className={`slide px-4 py-8 safe-top safe-bottom ${className}`}
+      className={`slide px-4 pt-8 pb-24 safe-top ${className}`}
       variants={containerVariants}
       initial="hidden"
       animate="visible"
