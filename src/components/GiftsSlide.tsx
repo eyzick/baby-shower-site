@@ -80,20 +80,20 @@ export default function GiftsSlide({ data, onNext }: GiftsSlideProps) {
         className="glass-card p-6 md:p-8 max-w-lg mx-auto mb-8"
       >
         <h3 className="font-display text-xl text-slate-800 mb-4 flex items-center justify-center gap-2">
-          <span>💡</span>
-          Gift Ideas
+          <span>🎟️</span>
+          Diaper Raffle
         </h3>
-        <ul className="space-y-3">
+        <ul className="space-y-4 text-left">
           {data.giftSuggestions.map((item, index) => (
             <motion.li
               key={index}
-              className="flex items-center gap-3 text-slate-700"
+              className="flex items-start gap-3 text-slate-700"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.5 + index * 0.1 }}
             >
               <motion.span
-                className="text-sky-400 text-lg"
+                className="text-sky-400 text-lg flex-shrink-0 mt-0.5"
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
               >

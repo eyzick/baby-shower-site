@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import SlideWrapper, { itemVariants } from './SlideWrapper';
 import { BabyShowerData } from '../types';
@@ -9,9 +10,13 @@ interface RsvpSlideProps {
 }
 
 export default function RsvpSlide({ data, onNext }: RsvpSlideProps) {
+  const [name, setName] = useState('');
+  const [guestCount, setGuestCount] = useState(1);
+
   const handleTextClick = () => {
+    const guestText = guestCount === 1 ? '1 person' : `${guestCount} people`;
     const message = encodeURIComponent(
-      `Hi ${data.hostName}! I'd love to attend ${data.parentNames}'s baby shower on ${data.date}!\n\nName: \nNumber of guests: `
+      `Hi ${data.hostName}! I'd love to attend ${data.parentNames}'s baby shower on ${data.date}!\n\nName: ${name || '[Your Name]'}\nNumber of guests: ${guestText}`
     );
     window.location.href = `sms:${data.hostPhone.replace(/[^0-9+]/g, '')}?body=${message}`;
   };
@@ -19,6 +24,9 @@ export default function RsvpSlide({ data, onNext }: RsvpSlideProps) {
   const handleCallClick = () => {
     window.location.href = `tel:${data.hostPhone.replace(/[^0-9+]/g, '')}`;
   };
+
+  const incrementGuests = () => setGuestCount(prev => Math.min(prev + 1, 10));
+  const decrementGuests = () => setGuestCount(prev => Math.max(prev - 1, 1));
 
   return (
     <SlideWrapper className="text-center">
@@ -52,6 +60,46 @@ export default function RsvpSlide({ data, onNext }: RsvpSlideProps) {
         <div className="mb-6">
           <p className="text-sm text-slate-500 mb-1">Hosted by</p>
           <p className="font-display text-xl text-slate-800">{data.hostName}</p>
+        </div>
+
+        {/* Name input */}
+        <div className="mb-4">
+          <label className="block text-sm text-slate-600 mb-2 text-left">Your Name</label>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Enter your name"
+            className="w-full px-4 py-3 rounded-xl border-2 border-sky-200 focus:border-sky-400 focus:outline-none transition-colors bg-white/80 text-slate-800 placeholder-slate-400"
+          />
+        </div>
+
+        {/* Guest count */}
+        <div className="mb-6">
+          <label className="block text-sm text-slate-600 mb-2 text-left">Number of Guests</label>
+          <div className="flex items-center justify-center gap-4">
+            <motion.button
+              onClick={decrementGuests}
+              className="w-12 h-12 rounded-full bg-sky-100 text-sky-600 font-bold text-2xl flex items-center justify-center border-2 border-sky-200 hover:bg-sky-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              disabled={guestCount <= 1}
+            >
+              −
+            </motion.button>
+            <div className="w-16 text-center">
+              <span className="text-3xl font-bold text-sky-600">{guestCount}</span>
+            </div>
+            <motion.button
+              onClick={incrementGuests}
+              className="w-12 h-12 rounded-full bg-sky-100 text-sky-600 font-bold text-2xl flex items-center justify-center border-2 border-sky-200 hover:bg-sky-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              disabled={guestCount >= 10}
+            >
+              +
+            </motion.button>
+          </div>
         </div>
 
         {/* Text button */}
